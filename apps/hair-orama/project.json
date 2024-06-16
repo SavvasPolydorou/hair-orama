@@ -65,8 +65,8 @@
           "host": "hair-orama.local",
           "port": 4200,
           "ssl": true,
-          "sslCert": "apps/hair-orama/ssl/hair-orama.local.crt",
-          "sslKey": "apps/hair-orama/ssl/hair-orama.local.key"
+          "sslCert": "nginx/ssl/hair-orama.local.crt",
+          "sslKey": "nginx/ssl/hair-orama.local.key"
         }
       },
       "defaultConfiguration": "development"

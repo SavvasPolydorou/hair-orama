@@ -16,3 +16,22 @@ services:
       - CHOKIDAR_USEPOLLING=true
     extra_hosts:
       - 'hair-orama.local:127.0.0.1'
+    # command: ['npx', 'nx', 'serve', 'hair-orama', '--host', 'hair-orama.local']
+    networks:
+      - default
+
+  nginx:
+    container_name: nginx
+    image: nginx:alpine
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro
+    networks:
+      - default
+
+networks:
+  default:
+    driver: bridge
