@@ -18,7 +18,6 @@ services:
       - 'hair-orama.local:127.0.0.1'
 
   flask-app:
-    image: dannykokkinos99/rest_api:dev
     build: 
       context: .
       dockerfile: ./apps/Backend/Dockerfile
