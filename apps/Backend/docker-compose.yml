@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  flask-app:
+    image: dannykokkinos99/rest_api:dev
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - MYSQL_HOST=mysql-db
+      - MYSQL_PORT=3306
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=rootpassword
+      - MYSQL_DB=flaskdb
+    depends_on:
+      - mysql-db
+    volumes:
+      - ./:/app
+
+  mysql-db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: flaskdb
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+volumes:
+  mysql-data:

@@ -1,0 +1,7 @@
+.venv
+__pycache__
+helpful_commands.txt
+models.drawio
+request.py
+helpful_commands.txt
+.gitignore
