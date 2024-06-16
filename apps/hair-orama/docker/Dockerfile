@@ -17,6 +17,6 @@ COPY . .
 EXPOSE 4200
 
 # Command to serve the Angular application with NX
-CMD ["npx", "nx", "serve", "hair-orama"]
-# CMD ["npx", "nx", "serve", "hair-orama", "--host", "0.0.0.0"]
+# CMD ["npx", "nx", "serve", "hair-orama"]
+CMD ["npx", "nx", "serve", "hair-orama", "--host", "0.0.0.0"]
 

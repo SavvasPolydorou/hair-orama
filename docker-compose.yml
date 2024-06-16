@@ -16,7 +16,7 @@ services:
     environment:
       - CHOKIDAR_USEPOLLING=true
     extra_hosts:
-      - 'hair-orama.local:127.0.0.1'
+      - 'hair-orama.local:127.0.0.1' 
     # command: ['npx', 'nx', 'serve', 'hair-orama', '--host', 'hair-orama.local']
     networks:
       - default
