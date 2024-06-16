@@ -1,0 +1,25 @@
+# Files and directories to ignore for Docker build context
+
+**/node_modules
+**/dist
+**/out
+
+# Logs and debugging files
+**/npm-debug.log*
+**/yarn-debug.log*
+**/yarn-error.log*
+**/.pnpm-debug.log*
+
+# Editor directories
+**/.idea
+**/.vscode
+
+# Miscellaneous
+**/.DS_Store
+**/.env
+**/.git
+**/.gitignore
+**/.dockerignore
+**/docker-compose.yml
+**/docker-compose.override.yml
+**/README.md

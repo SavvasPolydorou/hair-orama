@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  hair-orama:
+    container_name: app
+    image: app:dev
+    build:
+      context: .
+      dockerfile: ./apps/hair-orama/docker/Dockerfile
+    ports:
+      - '4200:4200'
+    volumes:
+      - ./apps/hair-orama:/usr/src/app
+      - /usr/src/app/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true # Needed for hot-reload to work properly in some environments
+    extra_hosts:
+      - 'hair-orama.local:127.0.0.1'
+
+networks:
+  default:

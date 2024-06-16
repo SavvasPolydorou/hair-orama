@@ -1,0 +1,119 @@
+{
+  "nodes": {
+    "hair-orama": {
+      "name": "hair-orama",
+      "type": "app",
+      "data": {
+        "root": ".",
+        "name": "hair-orama",
+        "$schema": "../../node_modules/nx/schemas/project-schema.json",
+        "projectType": "application",
+        "prefix": "app",
+        "sourceRoot": "apps/hair-orama/src",
+        "tags": [],
+        "targets": {
+          "build": {
+            "executor": "@angular-devkit/build-angular:application",
+            "outputs": [
+              "{options.outputPath}"
+            ],
+            "options": {
+              "outputPath": "dist/apps/hair-orama",
+              "index": "apps/hair-orama/src/index.html",
+              "browser": "apps/hair-orama/src/main.ts",
+              "polyfills": [
+                "zone.js"
+              ],
+              "tsConfig": "apps/hair-orama/tsconfig.app.json",
+              "inlineStyleLanguage": "scss",
+              "assets": [
+                {
+                  "glob": "**/*",
+                  "input": "apps/hair-orama/public"
+                }
+              ],
+              "styles": [
+                "apps/hair-orama/src/styles.scss"
+              ],
+              "scripts": [],
+              "server": "apps/hair-orama/src/main.server.ts",
+              "prerender": true,
+              "ssr": {
+                "entry": "apps/hair-orama/server.ts"
+              }
+            },
+            "configurations": {
+              "production": {
+                "budgets": [
+                  {
+                    "type": "initial",
+                    "maximumWarning": "500kb",
+                    "maximumError": "1mb"
+                  },
+                  {
+                    "type": "anyComponentStyle",
+                    "maximumWarning": "2kb",
+                    "maximumError": "4kb"
+                  }
+                ],
+                "outputHashing": "all"
+              },
+              "development": {
+                "optimization": false,
+                "extractLicenses": false,
+                "sourceMap": true
+              }
+            },
+            "defaultConfiguration": "production"
+          },
+          "serve": {
+            "executor": "@angular-devkit/build-angular:dev-server",
+            "configurations": {
+              "production": {
+                "buildTarget": "hair-orama:build:production"
+              },
+              "development": {
+                "buildTarget": "hair-orama:build:development",
+                "host": "hair-orama.local",
+                "port": 4200,
+                "ssl": true,
+                "sslCert": "apps/hair-orama/ssl/hair-orama.local.crt",
+                "sslKey": "apps/hair-orama/ssl/hair-orama.local.key"
+              }
+            },
+            "defaultConfiguration": "development",
+            "options": {}
+          },
+          "extract-i18n": {
+            "executor": "@angular-devkit/build-angular:extract-i18n",
+            "options": {
+              "buildTarget": "hair-orama:build"
+            },
+            "configurations": {}
+          },
+          "lint": {
+            "executor": "@nx/eslint:lint",
+            "options": {},
+            "configurations": {}
+          },
+          "test": {
+            "executor": "@nx/jest:jest",
+            "outputs": [
+              "{workspaceRoot}/coverage/{projectRoot}"
+            ],
+            "options": {
+              "jestConfig": "apps/hair-orama/jest.config.ts"
+            },
+            "configurations": {}
+          }
+        },
+        "implicitDependencies": []
+      }
+    }
+  },
+  "externalNodes": {},
+  "dependencies": {
+    "hair-orama": []
+  },
+  "version": "6.0"
+}

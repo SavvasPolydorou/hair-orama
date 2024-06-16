@@ -1,0 +1,138 @@
+{
+  "version": "6.0",
+  "nxVersion": "19.3.0",
+  "deps": {},
+  "pathMappings": {},
+  "nxJsonPlugins": [],
+  "fileMap": {
+    "projectFileMap": {
+      "hair-orama": [
+        {
+          "file": ".eslintrc.json",
+          "hash": "3322449398258820698"
+        },
+        {
+          "file": "docker/.dockerignore",
+          "hash": "9647338328602089958"
+        },
+        {
+          "file": "docker/Dockerfile",
+          "hash": "10787533296152221011"
+        },
+        {
+          "file": "jest.config.ts",
+          "hash": "11643131087009824886"
+        },
+        {
+          "file": "project.json",
+          "hash": "5247206880266126800"
+        },
+        {
+          "file": "public/favicon.ico",
+          "hash": "9303420814833116677"
+        },
+        {
+          "file": "server.ts",
+          "hash": "13858254174236988915"
+        },
+        {
+          "file": "src/app/app-routing.module.ts",
+          "hash": "6575190864165831855"
+        },
+        {
+          "file": "src/app/app.component.html",
+          "hash": "4281070375531242857"
+        },
+        {
+          "file": "src/app/app.component.scss",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "src/app/app.component.spec.ts",
+          "hash": "3147098071959713865"
+        },
+        {
+          "file": "src/app/app.component.ts",
+          "hash": "256895227158092257"
+        },
+        {
+          "file": "src/app/app.config.server.ts",
+          "hash": "472700109066692288"
+        },
+        {
+          "file": "src/app/app.config.ts",
+          "hash": "15117150474454388458"
+        },
+        {
+          "file": "src/app/app.module.ts",
+          "hash": "8987571297383833613"
+        },
+        {
+          "file": "src/app/features/features.module.ts",
+          "hash": "14849654326160511077"
+        },
+        {
+          "file": "src/app/features/home/home.component.html",
+          "hash": "8980251380215388944"
+        },
+        {
+          "file": "src/app/features/home/home.component.scss",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "src/app/features/home/home.component.ts",
+          "hash": "12704615922192316516"
+        },
+        {
+          "file": "src/app/nx-welcome.component.ts",
+          "hash": "9487686403937414402"
+        },
+        {
+          "file": "src/index.html",
+          "hash": "9898900167145702894"
+        },
+        {
+          "file": "src/main.server.ts",
+          "hash": "11653607448136507287"
+        },
+        {
+          "file": "src/main.ts",
+          "hash": "16635586463787978962"
+        },
+        {
+          "file": "src/styles.scss",
+          "hash": "5195668842064076916"
+        },
+        {
+          "file": "src/test-setup.ts",
+          "hash": "12935735732682149507"
+        },
+        {
+          "file": "ssl/hair-orama.local.crt",
+          "hash": "186167170743176370"
+        },
+        {
+          "file": "ssl/hair-orama.local.key",
+          "hash": "6355260004998624173"
+        },
+        {
+          "file": "tsconfig.app.json",
+          "hash": "564685728328269220"
+        },
+        {
+          "file": "tsconfig.editor.json",
+          "hash": "1055794200401717100"
+        },
+        {
+          "file": "tsconfig.json",
+          "hash": "10165753922017812673"
+        },
+        {
+          "file": "tsconfig.spec.json",
+          "hash": "2927375835638640771"
+        }
+      ]
+    },
+    "nonProjectFiles": []
+  }
+}
