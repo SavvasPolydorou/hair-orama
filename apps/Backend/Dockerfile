@@ -11,7 +11,7 @@ ENV FLASK_RUN_HOST=0.0.0.0
 WORKDIR /app
 
 # Install dependencies
-COPY requirements.txt .
+COPY apps/Backend/requirements.txt .
 RUN pip install -r requirements.txt
 
 # Copy the rest of the application code into the container
