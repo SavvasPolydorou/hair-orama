@@ -18,6 +18,8 @@ services:
       - 'hair-orama.local:127.0.0.1'
 
   flask-app:
+    container_name: api
+    image: api:dev
     build: 
       context: .
       dockerfile: ./apps/Backend/Dockerfile
@@ -35,6 +37,7 @@ services:
       - ./apps/Backend:/app
 
   mysql-db:
+    container_name: db
     image: mysql:8.0
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword
