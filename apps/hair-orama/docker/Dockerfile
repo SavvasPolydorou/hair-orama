@@ -16,8 +16,5 @@ COPY . .
 # Expose the port the app runs on
 EXPOSE 4200
 
-# Set environment variables
-ENV NX_WORKSPACE_ROOT=/usr/src/app
-
 # Command to serve the Angular application with NX
-CMD ["npx", "nx", "run", "hair-orama:serve:development"]
+CMD ["npx", "nx", "serve", "hair-orama", "--host", "0.0.0.0"]

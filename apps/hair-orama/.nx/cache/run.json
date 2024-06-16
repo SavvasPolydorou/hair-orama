@@ -1,8 +1,8 @@
 {
   "run": {
-    "command": "nx serve --host 0.0.0.0 --port 4200",
-    "startTime": "2024-06-15T18:21:27.234Z",
-    "endTime": "2024-06-15T18:21:28.400Z",
+    "command": "nx serve hair-orama --host 0.0.0.0",
+    "startTime": "2024-06-16T10:21:02.836Z",
+    "endTime": "2024-06-16T10:21:03.634Z",
     "inner": false
   },
   "tasks": [
@@ -10,9 +10,9 @@
       "taskId": "hair-orama:serve:development",
       "target": "serve",
       "projectName": "hair-orama",
-      "hash": "15946756087741508818",
-      "startTime": "2024-06-15T18:21:27.242Z",
-      "endTime": "2024-06-15T18:21:28.399Z",
+      "hash": "5337975713955566706",
+      "startTime": "2024-06-16T10:21:02.844Z",
+      "endTime": "2024-06-16T10:21:03.627Z",
       "params": "",
       "cacheStatus": "cache-miss",
       "status": 1

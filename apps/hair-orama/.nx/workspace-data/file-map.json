@@ -17,7 +17,7 @@
         },
         {
           "file": "docker/Dockerfile",
-          "hash": "10787533296152221011"
+          "hash": "13543014273678948992"
         },
         {
           "file": "jest.config.ts",
@@ -61,7 +61,7 @@
         },
         {
           "file": "src/app/app.config.ts",
-          "hash": "15117150474454388458"
+          "hash": "262838744236506341"
         },
         {
           "file": "src/app/app.module.ts",
@@ -73,7 +73,7 @@
         },
         {
           "file": "src/app/features/home/home.component.html",
-          "hash": "8980251380215388944"
+          "hash": "3335757731447338084"
         },
         {
           "file": "src/app/features/home/home.component.scss",
