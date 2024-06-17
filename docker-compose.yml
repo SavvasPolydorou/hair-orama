@@ -1,14 +1,14 @@
 version: '3.8'
 
 services:
-  hair-orama:
-    container_name: app
-    image: app:dev
+  app:
+    container_name: hair-orama-app
+    image: hair-orama-app:dev
     build:
       context: .
       dockerfile: ./apps/hair-orama/docker/Dockerfile
-    ports:
-      - '4200:4200'
+    # ports:
+    #   - '4200:4200'
     volumes:
       - .:/usr/src/app:cached
       - /usr/src/app/node_modules
@@ -16,54 +16,56 @@ services:
       - CHOKIDAR_USEPOLLING=true
     extra_hosts:
       - 'hair-orama.local:127.0.0.1'
+    networks:
+      - internal-net
+  # flask-app:
+  #   container_name: api
+  #   image: api:dev
+  #   build:
+  #     context: .
+  #     dockerfile: ./apps/Backend/Dockerfile
+  #   ports:
+  #     - '5000:5000'
+  #   environment:
+  #     - MYSQL_HOST=mysql-db
+  #     - MYSQL_PORT=3306
+  #     - MYSQL_USER=root
+  #     - MYSQL_PASSWORD=rootpassword
+  #     - MYSQL_DB=flaskdb
+  #   depends_on:
+  #     - mysql-db
+  #   volumes:
+  #     - ./apps/Backend:/app
 
-  flask-app:
-    container_name: api
-    image: api:dev
-    build: 
-      context: .
-      dockerfile: ./apps/Backend/Dockerfile
+  # mysql-db:
+  #   container_name: db
+  #   image: mysql:8.0
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: rootpassword
+  #     MYSQL_DATABASE: flaskdb
+  #   ports:
+  #     - '3306:3306'
+  #   volumes:
+  #     - mysql-data:/var/lib/mysql
+  # command: ['npx', 'nx', 'serve', 'hair-orama', '--host', 'hair-orama.local']
+  # networks:
+  #   - default
+
+  nginx:
+    container_name: nginx
+    image: nginx:alpine
     ports:
-      - '5000:5000'
-    environment:
-      - MYSQL_HOST=mysql-db
-      - MYSQL_PORT=3306
-      - MYSQL_USER=root
-      - MYSQL_PASSWORD=rootpassword
-      - MYSQL_DB=flaskdb
+      - '8080:443'
+      - '4200:443'
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro
     depends_on:
-      - mysql-db
-    volumes:
-      - ./apps/Backend:/app
+      - app
+    networks:
+      - internal-net
 
-  mysql-db:
-    container_name: db
-    image: mysql:8.0
-    environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: flaskdb
-    ports:
-      - '3306:3306'
-    volumes:
-      - mysql-data:/var/lib/mysql
-    # command: ['npx', 'nx', 'serve', 'hair-orama', '--host', 'hair-orama.local']
-    # networks:
-    #   - default
-
-#   nginx:
-#     container_name: nginx
-#     image: nginx:alpine
-#     ports:
-#       - '80:80'
-#       - '443:443'
-#     volumes:
-#       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-#       - ./nginx/ssl:/etc/nginx/ssl:ro
-#     networks:
-#       - default
-
-# networks:
-#   default:
-#     driver: bridge
-volumes:
-  mysql-data:
+networks:
+  internal-net:
+# volumes:
+#   mysql-data:
