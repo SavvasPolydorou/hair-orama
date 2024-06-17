@@ -11,8 +11,11 @@ ENV FLASK_RUN_HOST=0.0.0.0
 WORKDIR /app
 
 # Install dependencies
-COPY requirements.txt .
+COPY ./apps/Backend/requirements.txt .
 RUN pip install -r requirements.txt
+
+# Copy SSL certificates
+COPY ./nginx/ssl /etc/nginx/ssl
 
 # Copy the rest of the application code into the container
 COPY . .
@@ -21,4 +24,5 @@ COPY . .
 EXPOSE 5000
 
 # Command to run the application
-CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0", "--port=5000" , "--debug"]
+CMD ["python3", "-m", "flask", "run", "--host=hair-orama.local", "--port=5000", "--cert=/etc/nginx/ssl/hair-orama.local.crt", "--key=/etc/nginx/ssl/hair-orama.local.key"]
+# CMD [ "python3", "-m" , "app.py"]

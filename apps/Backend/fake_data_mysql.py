@@ -12,7 +12,7 @@ import pymysql
 fake = Faker()
 GMT_PLUS_2 = pytz.FixedOffset(120)
 # MySQL database configuration
-MYSQL_HOST = 'localhost'  # or 'mysql-db' if connecting from another Docker container
+MYSQL_HOST = 'mysql-db'  # or 'mysql-db' if connecting from another Docker container
 MYSQL_PORT = 3306
 MYSQL_USER = 'root'
 MYSQL_PASSWORD = 'rootpassword'
@@ -133,9 +133,10 @@ if __name__ == '__main__':
     try:
         with connection.cursor() as cursor:
             user_types = create_fake_users(cur=cursor, conn=connection, n=20)
-            create_mock_services(cur=cursor, conn=connection)
+            # create_mock_services(cur=cursor, conn=connection)
             # create_fake_appointment(cur=cursor, conn=connection, user_id_type=user_types)
             # print("Mock entries have been added to the database.")
     finally:
     # Close connection
+        print(f"Error connecting to MySQL database")
         connection.close()

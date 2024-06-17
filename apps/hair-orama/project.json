@@ -66,7 +66,8 @@
           "port": 4200,
           "ssl": true,
           "sslCert": "nginx/ssl/hair-orama.local.crt",
-          "sslKey": "nginx/ssl/hair-orama.local.key"
+          "sslKey": "nginx/ssl/hair-orama.local.key",
+          "poll": 2000
         }
       },
       "defaultConfiguration": "development"

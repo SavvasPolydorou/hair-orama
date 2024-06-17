@@ -38,7 +38,7 @@ api = Api(app, version='v 0.69', title='Backend Testing',
           description='Can be used to test a variety of endpoints that belong to the API',
           authorizations = authorizations,
           security='Bearer',
-          doc='/')  # Documentation URL
+          doc='/api/')  # Documentation URL
 CORS(app)
 # CORS(app, resources={r"/api/*": {"origin": "http://hair-orama.local:4200"}})
 
@@ -407,4 +407,4 @@ def create_time_slots(barber_id):
     db.session.commit()
 
 if __name__ == '__main__':
-    app.run(debug=True, host="0.0.0.0")
+    app.run(debug=True, host="0.0.0.0", ssl_context=('nginx/ssl/hair-orama.local.crt', 'nginx/ssl/hair-orama.local.key'))
