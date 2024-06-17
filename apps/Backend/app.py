@@ -405,6 +405,6 @@ def create_time_slots(barber_id):
         current_time += delta
 
     db.session.commit()
-
+### UTILITY FUNCTIONS ###
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", ssl_context=('nginx/ssl/hair-orama.local.crt', 'nginx/ssl/hair-orama.local.key'))
