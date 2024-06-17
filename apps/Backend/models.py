@@ -1,7 +1,9 @@
 # pylint: disable= C0116,C0114,C0115
+from datetime import datetime
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
-from datetime import datetime
+
+
 
 db = SQLAlchemy()
 
@@ -13,11 +15,13 @@ class User(db.Model):
     password_hash = db.Column(db.String(256), nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     role = db.Column(db.Enum('customer', 'barber', 'admin', name='user_roles'), nullable=False)
-    created_at = db.Column(db.DateTime, default=db.func.current_timestamp())
-    updated_at = db.Column(db.DateTime, default=db.func.current_timestamp(), onupdate=db.func.current_timestamp())
+    created_at = db.Column(db.DateTime, default=lambda: datetime.now().strftime('%d/%m/%Y %H:%M'))
+    updated_at = db.Column(db.DateTime, default=lambda: datetime.now().strftime('%d/%m/%Y %H:%M'),
+                            onupdate=lambda: datetime.now().strftime('%d/%m/%Y %H:%M'))
     appointments = db.relationship('Appointment', foreign_keys='Appointment.customer_id', back_populates='customer')
     barber_appointments = db.relationship('Appointment', foreign_keys='Appointment.barber_id', back_populates='barber')
-
+    availabilities = db.relationship('Availability', order_by='Availability.id', back_populates='barber')
+    
     def __repr__(self):
         return f'<User {self.id} {self.name} {self.lastname}>'
     
@@ -60,11 +64,11 @@ class Appointment(db.Model):
     barber = db.relationship('User', foreign_keys=[barber_id], back_populates='barber_appointments')
     service = db.relationship('Service')
 
-# class Availability(db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-#     barber_id = db.Column(db.Integer, db.ForeignKey('barber_profile.id'), nullable=False)
-#     start_time = db.Column(db.DateTime, nullable=False)
-#     end_time = db.Column(db.DateTime, nullable=False)
-#     created_at = db.Column(db.DateTime, default=datetime.utcnow())
-#     updated_at = db.Column(db.DateTime, default=datetime.utcnow(), onupdate=datetime.utcnow())
-#     barber = db.relationship('BarberProfile', back_populates='availabilities')
+class Availability(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    barber_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    start_time = db.Column(db.DateTime, nullable=False)
+    end_time = db.Column(db.DateTime, nullable=False)
+    created_at = db.Column(db.DateTime, default=db.func.current_timestamp())
+    updated_at = db.Column(db.DateTime, default=db.func.current_timestamp(), onupdate=db.func.current_timestamp())
+    barber = db.relationship('User', back_populates='availabilities')

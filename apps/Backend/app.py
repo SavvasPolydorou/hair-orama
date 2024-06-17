@@ -6,7 +6,8 @@ from flask_cors import CORS
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
 from flask_restx import Resource, Api, fields
 from config import SQLALCHEMY_DATABASE_URI, SQLALCHEMY_TRACK_MODIFICATIONS
-from models import User, db, Appointment, Service
+from models import User, db, Appointment, Service, Availability
+from datetime import datetime, timedelta
 
 
 
@@ -390,6 +391,20 @@ class UserDetailResource(Resource):
 ### ADD NAMESPACES ###
 api.add_namespace(user)
 api.add_namespace(auth)
+
+### UTILITY FUNCTIONS ###
+def create_time_slots(barber_id):
+    start_time = datetime.strptime("09:00", "%H:%M")
+    end_time = datetime.strptime("18:00", "%H:%M")
+    delta = timedelta(minutes=15)
+    current_time = start_time
+
+    while current_time < end_time:
+        slot = Availability(barber_id=barber_id, start_time=current_time, end_time=current_time + delta)
+        db.session.add(slot)
+        current_time += delta
+
+    db.session.commit()
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0")

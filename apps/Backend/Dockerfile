@@ -1,5 +1,5 @@
 # Use an official Python runtime as a parent image
-FROM python:3.9-slim
+FROM python:3.12-slim
 
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
@@ -11,7 +11,7 @@ ENV FLASK_RUN_HOST=0.0.0.0
 WORKDIR /app
 
 # Install dependencies
-COPY apps/Backend/requirements.txt .
+COPY requirements.txt .
 RUN pip install -r requirements.txt
 
 # Copy the rest of the application code into the container
